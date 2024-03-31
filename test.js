@@ -1,4 +1,4 @@
-function solution(str){
+function results(str){
   let i = 0;
   let result = new Array();
   if (str.length % 2 !== 0) {
@@ -19,4 +19,16 @@ function filterRangeInPlace(arr, a, b) {
       i--;
     }
   }
+}
+
+function unique(arr) {
+  let result = [];
+
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str);
+    }
+  }
+
+  return result;
 }
