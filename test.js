@@ -1,3 +1,4 @@
+
 function matchPairsInString(str){
   let i = 0;
   let result = new Array();
@@ -20,6 +21,17 @@ function filterRangeInPlace(arr, a, b) {
     }
   }
 }
+
+function unique(arr) {
+  let result = [];
+
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str);
+    }
+  }
+
+  return result;
 
 function groupById(array) {
   return array.reduce((obj, value) => {
