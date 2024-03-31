@@ -1,4 +1,5 @@
-function results(str){
+
+function matchPairsInString(str){
   let i = 0;
   let result = new Array();
   if (str.length % 2 !== 0) {
@@ -31,4 +32,10 @@ function unique(arr) {
   }
 
   return result;
+
+function groupById(array) {
+  return array.reduce((obj, value) => {
+    obj[value.id] = value;
+    return obj;
+  }, {})
 }
