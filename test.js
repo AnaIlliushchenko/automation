@@ -32,6 +32,7 @@ function unique(arr) {
   }
 
   return result;
+}
 
 function groupById(array) {
   return array.reduce((obj, value) => {
