@@ -1,0 +1,22 @@
+{
+  "name": "automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnaIlliushchenko/automation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnaIlliushchenko/automation/issues"
+  },
+  "homepage": "https://github.com/AnaIlliushchenko/automation#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
