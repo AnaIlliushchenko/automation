@@ -4,10 +4,13 @@ import { users } from '../src/users';
 import { ChatsPage } from '../src/pages/ChatsPage';
 
 test.describe('validation login tests', () => {
-  test('Login to the app as test user', async ({ page }) => {
+  test.beforeEach( async ({ page }) => {
     const loginPage = new LoginPage(page);
     await page.goto('/login');
     await loginPage.validate(); 
+  })
+  test('Login to the app as test user', async ({ page }) => {
+    const loginPage = new LoginPage(page);
     await loginPage.login(users.testUser);
     const chatsPage = new ChatsPage(page);
     await chatsPage.validate(); 
@@ -16,7 +19,6 @@ test.describe('validation login tests', () => {
 
   test('Check login with wrong creds', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await page.goto('/login');
     await loginPage.emailField.fill(users.testUser.email);
     await loginPage.passwordField.fill('0000');
     await loginPage.loginButton.click();
