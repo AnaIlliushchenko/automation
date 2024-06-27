@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AnaIlliushchenko/automation.git"
@@ -18,5 +16,9 @@
   "homepage": "https://github.com/AnaIlliushchenko/automation#readme",
   "dependencies": {
     "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.14.9"
   }
 }
