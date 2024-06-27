@@ -12,7 +12,7 @@ export class LoginPage extends Base {
 
   readonly forgotPasswordButton = this.getByText('Forgot password');
 
-  readonly validationError = this.getByRole('alert');
+  readonly validationError = this.getByText('Wrong Email or password');
 
   async login(user: User) {
     await this.emailField.fill(user.email);
@@ -23,7 +23,8 @@ export class LoginPage extends Base {
   async validate() {
     await expect(this.locator('[class="login-form__title text-h5 text-center font-weight-medium mb-2"]'))
                      .toHaveText('Welcome to Omni-dispatch TMS');
-    await expect(this.emailField).toBeVisible();
+    await 
+    expect(this.emailField).toBeVisible();
     await expect(this.passwordField).toBeVisible();
     await expect(this.loginButton).toBeVisible();
   }

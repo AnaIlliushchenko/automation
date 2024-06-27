@@ -6,7 +6,7 @@ export class User {
   constructor(name: string, email: string) {
     this.name = name;
     this.email = email;
-    this.password = process.env[`USER_${name.toUpperCase()}_PASS`] ?? '';
+    this.password = process.env[`USER_${name.replace(/\s+/g, '').toUpperCase()}_PASSWORD`] ?? '';
   }
 }
 
