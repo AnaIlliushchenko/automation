@@ -2,11 +2,12 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../src/pages/LoginPage';
 import { users } from '../src/users';
 import { ChatsPage } from '../src/pages/ChatsPage';
+import { goto } from '../src/navigation';
 
 test.describe('validation login tests', () => {
   test.beforeEach( async ({ page }) => {
     const loginPage = new LoginPage(page);
-    await page.goto('/login');
+    await goto(loginPage);
     await loginPage.validate(); 
   })
   test('Login to the app as test user', async ({ page }) => {
@@ -14,7 +15,7 @@ test.describe('validation login tests', () => {
     await loginPage.login(users.testUser);
     const chatsPage = new ChatsPage(page);
     await chatsPage.validate(); 
-    await expect(chatsPage.avatarButton).toHaveText(users.testUser.name);
+    await expect(chatsPage.header.avatarButton).toHaveText(users.testUser.name);
   });
 
   test('Check login with wrong creds', async ({ page }) => {

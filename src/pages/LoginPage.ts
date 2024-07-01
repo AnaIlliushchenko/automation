@@ -1,9 +1,10 @@
 import { expect } from '@playwright/test';
-import { Base } from './base';
+import { Base } from './base/base';
 import { User } from '../users';
+import { Navigation } from '../navigation';
 
 
-export class LoginPage extends Base {
+export class LoginPage extends Base implements Navigation{
   readonly emailField = this.getByType('email');
 
   readonly passwordField = this.getByType('password');
@@ -13,6 +14,12 @@ export class LoginPage extends Base {
   readonly forgotPasswordButton = this.getByText('Forgot password');
 
   readonly validationError = this.getByText('Wrong Email or password');
+
+  url() {
+    return 'login';
+  }
+
+  async waitForLoadState() {}
 
   async login(user: User) {
     await this.emailField.fill(user.email);

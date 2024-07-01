@@ -2,7 +2,7 @@ import { Locator, Page } from '@playwright/test';
 
 
 export abstract class Base {
-  readonly root: Page | Locator;
+  protected readonly root: Page | Locator;
 
   constructor (readonly page: Page) {
     this.root = page;
