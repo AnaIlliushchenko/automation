@@ -1,4 +1,4 @@
-import { Base } from './base';
+import { Base } from '../base/base';
 
 export class Footer extends Base {
   readonly footer = this.locator('[class="v-data-table-footer"]');

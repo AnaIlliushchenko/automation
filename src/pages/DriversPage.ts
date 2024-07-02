@@ -1,8 +1,8 @@
 import { expect } from '@playwright/test';
 import { BaseViewPage } from './base/baseViewPage';
-import { Footer } from './base/footer';
+import { Footer } from './components/footer';
 import { Navigation } from '../navigation';
-import { Table } from './base/table';
+import { Table } from './components/table';
 
 
 export class DriversPage extends BaseViewPage implements Navigation{

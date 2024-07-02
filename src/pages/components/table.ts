@@ -1,5 +1,5 @@
 import { Locator } from '@playwright/test';
-import { Base } from './base';
+import { Base } from '../base/base';
 
 
 export class Table extends Base {

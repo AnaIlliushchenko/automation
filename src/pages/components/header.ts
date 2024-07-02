@@ -1,4 +1,4 @@
-import { Base } from './base';
+import { Base } from '../base/base';
 
 export class Header extends Base {
   protected readonly root = this.locator('header');
