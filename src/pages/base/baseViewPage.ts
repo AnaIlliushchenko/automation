@@ -6,4 +6,10 @@ export abstract class BaseViewPage extends Base {
   readonly sidebar = new Sidebar(this.page);
 
   readonly header = new Header(this.page);
+
+  protected abstract readonly URL: string;
+
+  url() {
+    return this.URL;
+  }
 }

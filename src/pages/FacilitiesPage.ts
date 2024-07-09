@@ -5,17 +5,17 @@ import { Navigation } from '../navigation';
 import { Table } from './components/table';
 
 
-export class TrucksPage extends BaseViewPage implements Navigation{
+export class FacilitiesPage extends BaseViewPage implements Navigation{
   readonly footer = new Footer(this.page);
   
   readonly table = new Table(this.page);
 
-  protected readonly URL = 'fleets/trucks';
+  protected readonly URL = 'company/facilities';
 
   async waitForLoadState() {}
 
   async validate() {
-    await expect(this.locator('[class="v-table__wrapper"]')).toBeVisible();
+    await expect(this.locator('[class="v-col d-flex"]')).toBeVisible();
     await this.page.waitForLoadState();
   }
 }

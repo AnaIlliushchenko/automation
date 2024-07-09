@@ -6,10 +6,7 @@ import { Navigation } from '../navigation';
 export class ChatsPage extends BaseViewPage implements Navigation {
   readonly searchField = this.locator('[class="v-input__control"]').first();
 
-
-  url() {
-    return 'chats';
-  }
+  protected readonly URL = 'chats';
 
   async waitForLoadState() {}
 

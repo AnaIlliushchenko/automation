@@ -10,9 +10,7 @@ export class DriversPage extends BaseViewPage implements Navigation{
 
   readonly table = new Table(this.page);
 
-  url() {
-    return 'users/drivers';
-  }
+  protected readonly URL = 'users/drivers';
 
   async waitForLoadState() {}
 
