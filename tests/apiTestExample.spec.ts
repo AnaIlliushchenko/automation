@@ -54,4 +54,30 @@ test.describe('some API checking tests', () => {
     await expect(addresses[Object.keys(addresses)[0]].length).toEqual(1);
     await expect(addresses[Object.keys(addresses)[1]].length).toEqual(9);
   });
+
+  test('insertion emojis intead of numbers', async ({ api, page }) => {
+    const arr = ['😀', '🫠', '🫨', '🤤', '🤥', '🥵', '😎', '🤢', '👺', '👽️'];
+    await page.route('/api/v1/trucks?*', async route => {
+      const response = await route.fetch();
+      const json = await response.json();
+      const replaceNumberWithEmojies = (number) => number.toString().split('').map((item) => arr[item]).join('');
+
+      json.items = json.items.map((item) => {
+        if (item?.trailer) {
+          item.trailer.payload = replaceNumberWithEmojies(item.trailer.payload);
+          item.trailer.length = replaceNumberWithEmojies(item.trailer.length);
+          item.trailer.min_width = replaceNumberWithEmojies(item.trailer.min_width);
+          item.trailer.min_height = replaceNumberWithEmojies(item.trailer.min_height);
+        }
+        return item;
+      });
+
+      await route.fulfill({ response, json });
+    });
+
+    const trucksPage = new TrucksPage(page);
+    await goto(trucksPage);
+    await page.waitForTimeout(10000)
+    await trucksPage.validate();
+  });
 })
