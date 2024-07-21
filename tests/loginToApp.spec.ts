@@ -1,28 +1,17 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../src/pages/LoginPage';
+import { test, expect } from '../src/fixtures/base';
 import { users } from '../src/users';
-import { ChatsPage } from '../src/pages/ChatsPage';
-import { goto } from '../src/navigation';
 
 test.describe('validation login tests', () => {
-  test.beforeEach( async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    await goto(loginPage);
-    await loginPage.validate(); 
-  })
-  test('Login to the app as test user', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    await loginPage.login(users.testUser);
-    const chatsPage = new ChatsPage(page);
-    await chatsPage.validate(); 
-    await expect(chatsPage.header.avatarButton).toHaveText(users.testUser.name);
+
+  test('Login to the app as test user', async ({ app }) => {
+    await app.chatsPage.validate(); 
+    await expect(app.chatsPage.header.avatarButton).toHaveText(users.testUser.name);
   });
 
-  test('Check login with wrong creds', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    await loginPage.emailField.fill(users.testUser.email);
-    await loginPage.passwordField.fill('0000');
-    await loginPage.loginButton.click();
-    await expect(loginPage.validationError).toBeVisible();
+  test('Check login with wrong creds', async ({ app }) => {
+    await app.loginPage.emailField.fill(users.testUser.email);
+    await app.loginPage.passwordField.fill('0000');
+    await app.loginPage.loginButton.click();
+    await expect(app.loginPage.validationError).toBeVisible();
   });
 });

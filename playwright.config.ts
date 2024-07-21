@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import { config } from 'dotenv';
+import type { TestOption } from './src/fixtures/base';
+
 config();
 /**
  * Read environment variables from file.
@@ -11,7 +13,7 @@ config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export default defineConfig<TestOption>({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -35,8 +37,13 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Desktop Chrome, test user ',
+      use: { ...devices['Desktop Chrome'], user: 'testUser' },
+    },
+
+    {
+      name: 'Desktop Chrome, admin user ',
+      use: { ...devices['Desktop Chrome'], user: 'adminUser' },
     },
 
     {

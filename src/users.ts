@@ -11,5 +11,6 @@ export class User {
 }
 
 export const users = {
-  testUser: new User('Test User', 'test@gmail.com')
+  testUser: new User('Test User', 'test@gmail.com'),
+  adminUser: new User('Admin', 'admin@gmail.com')
 };
