@@ -26,7 +26,6 @@ export class LoginPage extends Base implements Navigation{
     await this.passwordField.fill(user.password);
     await this.loginButton.click();
     await this.page.waitForLoadState();
-    await this.page.waitForResponse('/api/v1/dispatchers/me?')
   }
 
   async validate() {

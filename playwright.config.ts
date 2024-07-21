@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { config } from 'dotenv';
-import type { TestOption } from './src/fixtures/base';
+import type { TestOption } from './src/fixtures/login';
 
 config();
 /**
